@@ -1,3 +1,11 @@
+/**
+ * Signup Screen
+ * 
+ * Handles new user registration with email, password, and profile information.
+ * Includes validation for password matching and minimum length requirements.
+ * 
+ * @module SignupScreen
+ */
 import React, { useState } from 'react';
 import {
   View,

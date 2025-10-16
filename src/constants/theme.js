@@ -1,35 +1,53 @@
-// Felony Fitness Brand Theme
-// Matches the web app's design system
+/**
+ * Felony Fitness Brand Theme
+ * 
+ * Central theme configuration matching the web app's design system.
+ * Defines colors, typography, spacing, and other design tokens for
+ * consistent styling across the native mobile application.
+ * 
+ * @module theme
+ */
 
+/**
+ * Main theme object containing all design tokens
+ * 
+ * @type {Object}
+ * @property {Object} colors - Color palette
+ * @property {Object} fonts - Typography settings
+ * @property {Object} spacing - Spacing scale
+ * @property {Object} borderRadius - Border radius values
+ * @property {Object} shadows - Shadow configurations for elevation
+ * @property {Object} layout - Layout constants
+ */
 export const theme = {
   colors: {
     // Primary Brand Colors
-    primary: '#f97316', // Orange accent (--accent-color)
-    primaryHover: '#ea580c', // Darker orange (--accent-color-hover)
+    primary: '#f97316', // Orange accent
+    primaryHover: '#ea580c', // Darker orange for pressed states
     
     // Backgrounds
-    background: '#1a202c', // Main background (--background-color)
-    card: '#2d3748', // Card/container background (--card-color)
+    background: '#1a202c', // Main app background
+    card: '#2d3748', // Card/container background
     cardLight: '#374151', // Slightly lighter card variant
     
     // Text
-    text: '#f7fafc', // Primary text (--text-primary)
-    textSecondary: '#a0aec0', // Secondary/muted text (--text-secondary)
-    textMuted: '#718096',
+    text: '#f7fafc', // Primary text color
+    textSecondary: '#a0aec0', // Secondary/muted text
+    textMuted: '#718096', // Even more muted text
     
     // UI Elements
-    border: '#4a5568', // Borders and dividers (--border-color)
+    border: '#4a5568', // Borders and dividers
     
     // Status Colors
-    success: '#10B981',
-    warning: '#FFC107',
-    error: '#EF4444',
-    info: '#3B82F6',
+    success: '#10B981', // Success state
+    warning: '#FFC107', // Warning state
+    error: '#EF4444', // Error state
+    info: '#3B82F6', // Info state
     
     // Chart/Graph Colors
-    chartOrange: '#f97316',
-    chartGrid: '#4a5568',
-    chartYellow: '#FFC107',
+    chartOrange: '#f97316', // Primary chart color
+    chartGrid: '#4a5568', // Grid lines
+    chartYellow: '#FFC107', // Secondary chart color
   },
   
   fonts: {
@@ -104,12 +122,17 @@ export const theme = {
   
   layout: {
     maxWidth: 450, // Phone-like max width from web app
-    navHeight: 60, // Bottom nav height
-    headerHeight: 56,
+    navHeight: 60, // Bottom navigation bar height
+    headerHeight: 56, // Header height
   },
 };
 
-// Helper function to create consistent component styles
+/**
+ * Helper function to create consistent component styles
+ * 
+ * @param {Object} styleObj - Style object to process
+ * @returns {Object} Processed style object
+ */
 export const createStyles = (styleObj) => {
   return styleObj;
 };
