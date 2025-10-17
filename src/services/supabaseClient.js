@@ -18,6 +18,33 @@ const supabaseUrl = Constants.expoConfig?.extra?.supabaseUrl || process.env.EXPO
 const supabaseAnonKey = Constants.expoConfig?.extra?.supabaseAnonKey || process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
 /**
+ * Validates that required Supabase credentials are present
+ * Throws an error with specific missing variable names if validation fails
+ * 
+ * @throws {Error} If supabaseUrl or supabaseAnonKey is missing
+ */
+function validateSupabaseCredentials() {
+  const missingVars = [];
+  
+  if (!supabaseUrl) {
+    missingVars.push('EXPO_PUBLIC_SUPABASE_URL (or extra.supabaseUrl in app.json)');
+  }
+  
+  if (!supabaseAnonKey) {
+    missingVars.push('EXPO_PUBLIC_SUPABASE_ANON_KEY (or extra.supabaseAnonKey in app.json)');
+  }
+  
+  if (missingVars.length > 0) {
+    const errorMessage = `Missing required Supabase credentials: ${missingVars.join(', ')}. Please check your environment configuration.`;
+    console.error(errorMessage);
+    throw new Error(errorMessage);
+  }
+}
+
+// Validate credentials before creating client
+validateSupabaseCredentials();
+
+/**
  * Supabase client instance configured for React Native
  * 
  * Features:

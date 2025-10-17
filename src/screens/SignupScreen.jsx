@@ -21,6 +21,7 @@ import {
 } from 'react-native';
 import { supabase } from '../services/supabaseClient';
 import { useRouter } from 'expo-router';
+import { theme } from '../constants/theme';
 
 /**
  * SignupScreen Component
@@ -166,7 +167,7 @@ export default function SignupScreen() {
           <TextInput
             style={styles.input}
             placeholder="First Name"
-            placeholderTextColor="#999"
+            placeholderTextColor={theme.colors.textMuted}
             value={firstName}
             onChangeText={setFirstName}
             autoCapitalize="words"
@@ -176,7 +177,7 @@ export default function SignupScreen() {
           <TextInput
             style={styles.input}
             placeholder="Last Name"
-            placeholderTextColor="#999"
+            placeholderTextColor={theme.colors.textMuted}
             value={lastName}
             onChangeText={setLastName}
             autoCapitalize="words"
@@ -186,7 +187,7 @@ export default function SignupScreen() {
           <TextInput
             style={styles.input}
             placeholder="Email"
-            placeholderTextColor="#999"
+            placeholderTextColor={theme.colors.textMuted}
             value={email}
             onChangeText={setEmail}
             autoCapitalize="none"
@@ -197,7 +198,7 @@ export default function SignupScreen() {
           <TextInput
             style={styles.input}
             placeholder="Password (min 6 characters)"
-            placeholderTextColor="#999"
+            placeholderTextColor={theme.colors.textMuted}
             value={password}
             onChangeText={setPassword}
             secureTextEntry
@@ -208,7 +209,7 @@ export default function SignupScreen() {
           <TextInput
             style={styles.input}
             placeholder="Confirm Password"
-            placeholderTextColor="#999"
+            placeholderTextColor={theme.colors.textMuted}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             secureTextEntry
@@ -222,7 +223,7 @@ export default function SignupScreen() {
             disabled={loading}
           >
             {loading ? (
-              <ActivityIndicator color="#fff" />
+              <ActivityIndicator color={theme.colors.text} />
             ) : (
               <Text style={styles.buttonText}>Sign Up</Text>
             )}
@@ -247,7 +248,7 @@ export default function SignupScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#000',
+    backgroundColor: theme.colors.background,
   },
   scrollContent: {
     flexGrow: 1,
@@ -261,28 +262,28 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#fff',
+    color: theme.colors.text,
     marginBottom: 8,
     textAlign: 'center',
   },
   subtitle: {
     fontSize: 16,
-    color: '#999',
+    color: theme.colors.textSecondary,
     marginBottom: 32,
     textAlign: 'center',
   },
   input: {
-    backgroundColor: '#1a1a1a',
+    backgroundColor: theme.colors.card,
     borderRadius: 8,
     padding: 16,
     fontSize: 16,
-    color: '#fff',
+    color: theme.colors.text,
     marginBottom: 16,
     borderWidth: 1,
-    borderColor: '#333',
+    borderColor: theme.colors.border,
   },
   button: {
-    backgroundColor: '#ff4444',
+    backgroundColor: theme.colors.error,
     borderRadius: 8,
     padding: 16,
     alignItems: 'center',
@@ -292,7 +293,7 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   buttonText: {
-    color: '#fff',
+    color: theme.colors.text,
     fontSize: 16,
     fontWeight: '600',
   },
@@ -302,11 +303,11 @@ const styles = StyleSheet.create({
     marginTop: 24,
   },
   loginText: {
-    color: '#999',
+    color: theme.colors.textSecondary,
     fontSize: 14,
   },
   loginLink: {
-    color: '#ff4444',
+    color: theme.colors.error,
     fontSize: 14,
     fontWeight: '600',
   },
