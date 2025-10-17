@@ -18,10 +18,9 @@ const supabaseUrl = Constants.expoConfig?.extra?.supabaseUrl || process.env.EXPO
 const supabaseAnonKey = Constants.expoConfig?.extra?.supabaseAnonKey || process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY;
 
 /**
- * Validates that required Supabase credentials are present
- * Throws an error with specific missing variable names if validation fails
- * 
- * @throws {Error} If supabaseUrl or supabaseAnonKey is missing
+ * Ensure required Supabase credentials are present.
+ *
+ * @throws {Error} If one or both credentials are missing; the error message lists the missing environment variables (EXPO_PUBLIC_SUPABASE_URL and/or EXPO_PUBLIC_SUPABASE_ANON_KEY or their expo config equivalents).
  */
 function validateSupabaseCredentials() {
   const missingVars = [];

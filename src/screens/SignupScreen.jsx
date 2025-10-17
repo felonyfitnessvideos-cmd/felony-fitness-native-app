@@ -24,12 +24,22 @@ import { useRouter } from 'expo-router';
 import { theme } from '../constants/theme';
 
 /**
- * SignupScreen Component
- * 
- * Renders the signup interface with form inputs for user registration.
- * Handles user account creation with validation and error handling.
- * 
- * @returns {JSX.Element} The signup screen component
+ * Render the signup screen and handle new user registration.
+ * Collects first name, last name, email, and password, performs validation,
+ * creates the account via Supabase, and routes the user on success.
+ * @returns {JSX.Element} The signup screen component.
+ */
+
+/**
+ * Validate input and create a new user account.
+ *
+ * Ensures all fields are provided, passwords match, and password meets length
+ * requirements before calling the authentication backend. Presents user-facing
+ * alerts for validation failures and signup results.
+ */
+ 
+/**
+ * Navigate back to the login screen.
  */
 export default function SignupScreen() {
   /**
