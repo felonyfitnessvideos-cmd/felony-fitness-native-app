@@ -1,3 +1,11 @@
+/**
+ * Login Screen
+ * 
+ * Provides email/password authentication for existing users.
+ * Includes form validation, error handling, and navigation to signup.
+ * 
+ * @module LoginScreen
+ */
 import React, { useState } from 'react';
 import {
   View,
@@ -13,13 +21,51 @@ import {
 import { supabase } from '../services/supabaseClient';
 import { useRouter } from 'expo-router';
 
+/**
+ * LoginScreen Component
+ * 
+ * Renders the login interface with email and password inputs.
+ * Handles user authentication and navigation.
+ * 
+ * @returns {JSX.Element} The login screen component
+ */
 export default function LoginScreen() {
+  /**
+   * User's email address
+   * @type {[string, Function]}
+   */
   const [email, setEmail] = useState('');
+  
+  /**
+   * User's password
+   * @type {[string, Function]}
+   */
   const [password, setPassword] = useState('');
+  
+  /**
+   * Loading state during authentication
+   * @type {[boolean, Function]}
+   */
   const [loading, setLoading] = useState(false);
+  
+  /**
+   * Router instance for navigation
+   * @type {Object}
+   */
   const router = useRouter();
 
+  /**
+   * Handles user login with email and password
+   * 
+   * Validates input fields, authenticates with Supabase, and handles errors.
+   * Navigation to authenticated screens is handled automatically by auth state change.
+   * 
+   * @async
+   * @function handleLogin
+   * @returns {Promise<void>}
+   */
   const handleLogin = async () => {
+    // Validate required fields
     if (!email || !password) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
@@ -34,10 +80,8 @@ export default function LoginScreen() {
 
       if (error) {
         Alert.alert('Login Failed', error.message);
-      } else {
-        // Navigation will be handled automatically by auth state change
-        console.log('Login successful:', data);
       }
+      // Navigation will be handled automatically by auth state change in AuthContext
     } catch (error) {
       Alert.alert('Error', 'An unexpected error occurred');
       console.error('Login error:', error);
@@ -46,6 +90,12 @@ export default function LoginScreen() {
     }
   };
 
+  /**
+   * Navigates to the signup screen
+   * 
+   * @function navigateToSignup
+   * @returns {void}
+   */
   const navigateToSignup = () => {
     router.push('/signup');
   };
@@ -104,6 +154,10 @@ export default function LoginScreen() {
   );
 }
 
+/**
+ * StyleSheet for LoginScreen component
+ * @type {Object}
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,

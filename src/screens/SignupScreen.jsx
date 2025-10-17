@@ -22,27 +22,81 @@ import {
 import { supabase } from '../services/supabaseClient';
 import { useRouter } from 'expo-router';
 
+/**
+ * SignupScreen Component
+ * 
+ * Renders the signup interface with form inputs for user registration.
+ * Handles user account creation with validation and error handling.
+ * 
+ * @returns {JSX.Element} The signup screen component
+ */
 export default function SignupScreen() {
+  /**
+   * User's email address
+   * @type {[string, Function]}
+   */
   const [email, setEmail] = useState('');
+  
+  /**
+   * User's password
+   * @type {[string, Function]}
+   */
   const [password, setPassword] = useState('');
+  
+  /**
+   * Password confirmation for validation
+   * @type {[string, Function]}
+   */
   const [confirmPassword, setConfirmPassword] = useState('');
+  
+  /**
+   * User's first name
+   * @type {[string, Function]}
+   */
   const [firstName, setFirstName] = useState('');
+  
+  /**
+   * User's last name
+   * @type {[string, Function]}
+   */
   const [lastName, setLastName] = useState('');
+  
+  /**
+   * Loading state during account creation
+   * @type {[boolean, Function]}
+   */
   const [loading, setLoading] = useState(false);
+  
+  /**
+   * Router instance for navigation
+   * @type {Object}
+   */
   const router = useRouter();
 
+  /**
+   * Handles new user signup with validation
+   * 
+   * Validates all input fields, checks password requirements,
+   * creates user account in Supabase, and handles email confirmation flow.
+   * 
+   * @async
+   * @function handleSignup
+   * @returns {Promise<void>}
+   */
   const handleSignup = async () => {
-    // Validation
+    // Validate all required fields are filled
     if (!email || !password || !confirmPassword || !firstName || !lastName) {
       Alert.alert('Error', 'Please fill in all fields');
       return;
     }
 
+    // Validate password match
     if (password !== confirmPassword) {
       Alert.alert('Error', 'Passwords do not match');
       return;
     }
 
+    // Validate password length
     if (password.length < 6) {
       Alert.alert('Error', 'Password must be at least 6 characters');
       return;
@@ -50,7 +104,7 @@ export default function SignupScreen() {
 
     setLoading(true);
     try {
-      // Sign up the user
+      // Sign up the user with Supabase Auth
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: email.trim(),
         password: password,
@@ -86,6 +140,12 @@ export default function SignupScreen() {
     }
   };
 
+  /**
+   * Navigates back to the login screen
+   * 
+   * @function navigateToLogin
+   * @returns {void}
+   */
   const navigateToLogin = () => {
     router.back();
   };
@@ -180,6 +240,10 @@ export default function SignupScreen() {
   );
 }
 
+/**
+ * StyleSheet for SignupScreen component
+ * @type {Object}
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
