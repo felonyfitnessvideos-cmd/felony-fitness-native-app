@@ -9,6 +9,15 @@ export const unstable_settings = {
   anchor: '(tabs)',
 };
 
+/**
+ * Composes app-level providers and the root navigation stack for the application.
+ *
+ * The component wraps the UI with authentication and theming providers, selects a theme
+ * based on the current color scheme, and defines the root Stack navigator with
+ * routes for login, signup, the main tabs, and a modal screen.
+ *
+ * @returns The React element tree containing AuthProvider, ThemeProvider, the root Stack navigator, and StatusBar.
+ */
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 

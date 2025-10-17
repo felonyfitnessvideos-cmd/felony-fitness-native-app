@@ -13,12 +13,10 @@ import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { useAuth } from '@/src/contexts/AuthContext';
 
 /**
- * Index Component
- * 
- * Root route that determines where to navigate based on authentication state.
- * Shows a loading indicator while checking auth status.
- * 
- * @returns {JSX.Element} Loading screen with auth-based navigation
+ * Decide the initial app route based on authentication status and display a loading screen while the check is in progress.
+ *
+ * Displays a full-screen centered ActivityIndicator while determining whether to navigate to the authentication flow or the main app.
+ * @returns {JSX.Element} A full-screen loading view with a centered spinner. 
  */
 export default function Index() {
   const { user, loading } = useAuth();
