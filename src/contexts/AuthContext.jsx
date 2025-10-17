@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Authentication Context
  * 
  * Provides authentication state and user data to all components in the app.
@@ -16,14 +16,11 @@ import { supabase } from '../services/supabaseClient';
 const AuthContext = createContext();
 
 /**
- * AuthProvider Component
- * 
- * Wraps the application to provide authentication context to all child components.
- * Automatically listens for auth state changes and updates the context accordingly.
- * 
- * @param {Object} props - Component props
- * @param {React.ReactNode} props.children - Child components to wrap
- * @returns {JSX.Element} Provider component with auth state
+ * Provides authentication state (session, user, loading) to descendant components.
+ *
+ * @param {Object} props - Component props.
+ * @param {React.ReactNode} props.children - Components to render inside the provider.
+ * @returns {JSX.Element} The AuthContext provider that renders children after the initial auth check completes.
  */
 export function AuthProvider({ children }) {
   /**
@@ -120,18 +117,10 @@ export function AuthProvider({ children }) {
 }
 
 /**
- * Custom hook to access authentication context
- * 
- * @returns {Object} Authentication context value
- * @returns {Object|null} return.session - Current user session
- * @returns {Object|null} return.user - Current user object
- * @returns {boolean} return.loading - Loading state
- * @throws {Error} If used outside of AuthProvider
- * 
- * @example
- * const { user, loading } = useAuth();
- * if (loading) return <LoadingSpinner />;
- * if (!user) return <LoginScreen />;
+ * Access the authentication context provided by AuthProvider.
+ *
+ * @returns {{session: Object|null, user: Object|null, loading: boolean}} An object with the current `session` (object or `null`), `user` (object or `null`), and `loading` (boolean) state.
+ * @throws {Error} If used outside of an AuthProvider.
  */
 export function useAuth() {
   const context = useContext(AuthContext);

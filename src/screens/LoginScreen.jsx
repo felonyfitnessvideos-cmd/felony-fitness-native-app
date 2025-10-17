@@ -22,12 +22,9 @@ import { supabase } from '../services/supabaseClient';
 import { useRouter } from 'expo-router';
 
 /**
- * LoginScreen Component
- * 
- * Renders the login interface with email and password inputs.
- * Handles user authentication and navigation.
- * 
- * @returns {JSX.Element} The login screen component
+ * Render the login screen with email and password inputs, authentication handling, and navigation to signup.
+ *
+ * @returns {JSX.Element} The login screen UI.
  */
 export default function LoginScreen() {
   /**
